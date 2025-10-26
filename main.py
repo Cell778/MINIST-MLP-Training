@@ -1,8 +1,10 @@
 from train import run_training
+import torch
 
 if __name__ == "__main__":
-    # Windows 下必须加这个保护语句
-    print("🚀 Starting MNIST MLP training...")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+    print(f"🚀 Starting MNIST MLP training on {device}")
     model = run_training(
         epochs=10,
         batch_size=128,
